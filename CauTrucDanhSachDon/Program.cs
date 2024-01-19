@@ -58,6 +58,29 @@ namespace CauTrucDanhSachDon
                 q.Next = p;
             }
         }
+        public void XoaDau()
+        {
+            if(head != null)
+            {
+                Node p = head;
+                head = head.Next;
+                p.Next = null;
+            }
+        }
+        public void XoaCuoi()
+        {
+            if(head != null)
+            {
+                Node p = head;
+                Node q = null;
+                while(p.Next != null)
+                {
+                    q = p;
+                    p = p.Next;
+                }
+                q.Next = null;
+            }
+        }
         public void Xuat()
         {
             Node p = head;
@@ -73,10 +96,17 @@ namespace CauTrucDanhSachDon
         static void Main(string[] args)
         {
             DanhSachLienKetDon ds = new DanhSachLienKetDon();
+            Console.WriteLine("Danh sach ");
             ds.ThemDau(2);
             ds.ThemDau(1);
 
             ds.ThemCuoi(3);
+            ds.Xuat();
+            Console.WriteLine("\nDanh sach xoa dau");
+            ds.XoaDau();
+            ds.Xuat();
+            Console.WriteLine("\nDanh sach xoa cuoi");
+            ds.XoaCuoi();
             ds.Xuat();
             Console.ReadLine();
         }
