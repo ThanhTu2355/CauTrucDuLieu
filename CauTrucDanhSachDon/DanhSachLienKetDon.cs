@@ -59,6 +59,60 @@ namespace CauTrucDanhSachDon
                 q.Next = null;
             }
         }
+        public void XoaNodebatKy(int x)
+        {
+            if(head!=null)
+            {
+                Node p = head;
+                Node q = null;
+                while (p != null && p.Info!=x)
+                {
+                    q = p;
+                    p = p.Next;
+                }
+                if(p!=null)
+                {
+                    if (p == head)
+                    {
+                        XoaDau();
+                    }
+                    else
+                    {
+                        q.Next = p.Next;
+                        p.Next = null;
+                    }
+                }
+            }
+        }
+        public Node TimMax()
+        {
+            Node max = head;
+            Node p = null;
+            while (p != null)
+            {
+                if (p.Info > max.Info)
+                {
+                    max = p;
+                }
+                p = p.Next;
+            }
+
+            return max;
+        }
+        public float TinhTrungBinh()
+        {
+            float sum = 0;
+            float dem = 0;
+            Node p = head;
+            while(p!=null)
+            {
+                sum += p.Info;
+                dem++;
+
+                p = p.Next;
+            }
+            return sum / dem;
+        }
         public void Xuat()
         {
             Node p = head;
